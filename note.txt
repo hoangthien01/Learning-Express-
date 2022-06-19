@@ -1,0 +1,7 @@
+** Note some confusion
+
+- Custom collection name with collection option when create new schema or specific collection name when cerate model (mongoose.model('user', user, 'User');)
+- We can executes Mongoose query by call exec() function or call then() function
+- Mongoose queries are not promises. They have a .then() function for co and async/await as a convenience.
+- Don't mix using callbacks and promises with queries, or you may end up with duplicate operations. That's because passing a callback to a query function immediately executes the query, 
+and calling then() or await executes the query again.
