@@ -11,20 +11,37 @@ const user = new Schema({
   Age: Number
 }, { collection: 'User' });
 const UserModel = mongoose.model('user', user);
+
+//#region Create
+
 // UserModel.create({
 //   name: 'Linda',
 //   Age: 33
 // })
 
+//#endregion
+
+
+//#region Update
+// UserModel.updateOne({ name: 'Thien' }, {
+//   name: 'HoangThien'
+// }).then(data => {
+//   console.log('data', data)
+// }).catch(error => {
+//   console.log('err', error)
+// });
+//#endregion
+
+//#region Find
 UserModel.find({}, (err, res) => {
   console.log(res);
 })
-  // .then((data) => {
-  //   console.log('data', data);
-  // })
-  // .catch((err) => {
-  //   console.log('Error', err);
-  // });
+// .then((data) => {
+//   console.log('data', data);
+// })
+// .catch((err) => {
+//   console.log('Error', err);
+// });
 
 
 // let aaa = UserModel.find({}).exec();
@@ -36,3 +53,13 @@ UserModel.find({}, (err, res) => {
 // setTimeout(() => {
 //   console.log('Error', aaa);
 // }, 2000)
+
+//#endregion
+
+//#region Delete
+// UserModel.deleteOne({ name: 'Thien' }).then(data => {
+//   console.log('data', data)
+// }).catch(error => {
+//   console.log('err', error)
+// });
+//#endregion
