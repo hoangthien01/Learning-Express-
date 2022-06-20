@@ -1,6 +1,7 @@
 const express = require("express");
 
 var app = express();
+var bodyParser = require('body-parser')
 var router1 = require('./apiRouter')
 var checkLogined = (req, res, next) => {
   if (true) {
@@ -13,6 +14,7 @@ var checkLogined = (req, res, next) => {
     res.json('You are not logged in')
   }
 }
+
 var checkRoleUser = (req, res, next) => {
   if (req.user.role) {
     console.log('Logined and have role')
@@ -23,6 +25,11 @@ var checkRoleUser = (req, res, next) => {
     next("Error")
   }
 }
+
+app.use(bodyParser.urlencoded({ extended: false }))
+
+// parse application/json
+app.use(bodyParser.json())
 
 app.use('/api/v1', router1)
 
@@ -43,9 +50,8 @@ app.get("/admin", checkLogined, checkRoleUser, (req, res, next) => {
   console.log('All done');
 });
 
-// Global port, all Middleware end with next() and not have next Middleware
-// will be move to this Middleware
-// Handle error, if next have params
+// Case 1: Global port, all Middleware end with next() and not have next Middleware will be move to this Middleware
+// Case 2: Handle error, if next have params and callback function have err parameter
 app.use((err, req, res, next) => {
   console.log('Middleware final');
   res.json("Home");
