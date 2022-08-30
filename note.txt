@@ -5,3 +5,4 @@
 - Mongoose queries are not promises. They have a .then() function for co and async/await as a convenience.
 - Don't mix using callbacks and promises with queries, or you may end up with duplicate operations. That's because passing a callback to a query function immediately executes the query, 
 and calling then() or await executes the query again.
+- npm: body parser -> view body from req
